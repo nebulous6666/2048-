@@ -1,0 +1,11 @@
+debug/gamewindow.o
+debug/instructionswindow.o
+debug/keybindingswindow.o
+debug/main.o
+debug/mainwindow.o
+debug/welcomewindow.o
+debug/moc_gamewindow.o
+debug/moc_instructionswindow.o
+debug/moc_keybindingswindow.o
+debug/moc_mainwindow.o
+debug/moc_welcomewindow.o
