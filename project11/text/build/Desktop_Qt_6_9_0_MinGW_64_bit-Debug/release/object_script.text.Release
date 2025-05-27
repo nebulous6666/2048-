@@ -1,11 +1,13 @@
 release/gamewindow.o
 release/instructionswindow.o
 release/keybindingswindow.o
+release/loginwindow.o
 release/main.o
 release/mainwindow.o
 release/welcomewindow.o
 release/moc_gamewindow.o
 release/moc_instructionswindow.o
 release/moc_keybindingswindow.o
+release/moc_loginwindow.o
 release/moc_mainwindow.o
 release/moc_welcomewindow.o

@@ -2,16 +2,10 @@
 #define WELCOMEWINDOW_H
 
 #include <QMainWindow>
+#include <QString>
+#include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QWidget>
-#include <QFileDialog>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QApplication>
-
 class WelcomeWindow : public QMainWindow
 {
     Q_OBJECT
@@ -25,20 +19,17 @@ private slots:
     void onInstructionsClicked();
     void onKeyBindingsClicked();
     void onExitClicked();
-    void onLoginClicked();
 
 private:
     QWidget *centralWidget;
     QVBoxLayout *mainLayout;
     QLabel *titleLabel;
+
+    // 菜单按钮
     QPushButton *startButton;
     QPushButton *instructionsButton;
     QPushButton *keyBindingsButton;
     QPushButton *exitButton;
-    QWidget *loginWidget;
-    QLineEdit *usernameEdit;
-    QLineEdit *passwordEdit;
-    QPushButton *loginButton;
 };
 
 #endif // WELCOMEWINDOW_H

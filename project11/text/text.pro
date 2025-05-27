@@ -12,6 +12,7 @@ SOURCES += \
     gamewindow.cpp \
     instructionswindow.cpp \
     keybindingswindow.cpp \
+    loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     welcomewindow.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     gamewindow.h \
     instructionswindow.h \
     keybindingswindow.h \
+    loginwindow.h \
     mainwindow.h \
     welcomewindow.h
 
