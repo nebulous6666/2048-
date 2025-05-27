@@ -1,22 +1,29 @@
 #include "gamewindow.h"
 
-GameWindow::GameWindow(QWidget *parent) : QMainWindow(parent)
+GameWindow::GameWindow(QWidget *parent) : QMainWindow(parent), timer(new QTimer(this))
 {
     setWindowTitle("2048游戏");
     setMinimumSize(600, 700);
 
     centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
+    //将刚刚创建的QWidget对象设置为GameWindow的中央部件。
 
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
+    //mainLayout 被定义成局部变量，它的作用域仅限于构造函数内部。在构造函数执行完毕之后，这个布局对象的地址就不再被其他成员函数引用
 
     // 游戏信息面板
     QWidget *infoWidget = new QWidget(centralWidget);
+    //infoWidget被用作一个容器，用于容纳游戏信息显示部件和操作按钮。
     QGridLayout *infoLayout = new QGridLayout(infoWidget);
+    //QGridLayout是一种布局管理器，它能够将部件排列成网格状。在网格布局中，每个部件都可以被放置在指定的行和列位置，方便进行复杂的界面布局。
 
     QLabel *titleLabel = new QLabel("2048", infoWidget);
     titleLabel->setStyleSheet("font-size: 48px; font-weight: bold; color: #776e65;");
     infoLayout->addWidget(titleLabel, 0, 0, 2, 1);
+    // font-size: 48px：设置标签文本的字体大小为 48 像素，使标题更加醒目。
+    // font-weight: bold：设置标签文本的字体为粗体，增强标题的视觉效果。
+    // color: #776e65：设置标签文本的颜色为十六进制颜色码
 
     scoreLabel = new QLabel("分数: 0", infoWidget);
     scoreLabel->setStyleSheet("font-size: 24px; color: #776e65;");
@@ -48,16 +55,16 @@ GameWindow::GameWindow(QWidget *parent) : QMainWindow(parent)
     QWidget *boardWidget = new QWidget(centralWidget);
     boardWidget->setStyleSheet("background-color: #bbada0; border-radius: 10px;");
     gameLayout = new QGridLayout(boardWidget);
-    gameLayout->setSpacing(10);
-    gameLayout->setContentsMargins(10, 10, 10, 10);
+    gameLayout->setSpacing(10);// 设置网格布局中各个部件之间的间距为 10 像素，使格子之间有一定的间隔。
+    gameLayout->setContentsMargins(10, 10, 10, 10);//设置布局的内边距为 10 像素，即布局内容与布局边界之间的距离。
 
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             board[i][j] = new QLabel("", boardWidget);
-            board[i][j]->setAlignment(Qt::AlignCenter);
+            board[i][j]->setAlignment(Qt::AlignCenter);//设置每个 QLabel 的文本对齐方式为居中对齐，使文本在格子中居中显示。
             board[i][j]->setStyleSheet("background-color: #cdc1b4; border-radius: 5px;");
-            board[i][j]->setFixedSize(120, 120);
-            gameLayout->addWidget(board[i][j], i, j);
+            board[i][j]->setFixedSize(120, 120);//设置每个 QLabel 的固定大小为 120x120 像素
+            gameLayout->addWidget(board[i][j], i, j);//使用 addWidget 方法将每个 QLabel 添加到 gameLayout 中，i 和 j 分别指定了 QLabel 在网格布局中的行和列位置。
         }
     }
 
@@ -135,6 +142,7 @@ void GameWindow::updateTime()
     int minutes = seconds / 60;
     seconds = seconds % 60;
     elapsedTime = QString("%1:%2").arg(minutes, 2, 10, QChar('0')).arg(seconds, 2, 10, QChar('0'));
+    //.arg(minutes, 2, 10, QChar('0')) 表示将 minutes 作为第一个参数替换 %1，并将其格式化为宽度为 2 的十进制字符串，不足两位时在前面补 0。
     timeLabel->setText("时间: " + elapsedTime);
 }
 
@@ -494,7 +502,7 @@ void GameWindow::loadGame(const QString &filename)
 
         // 读取分数和步数
         score = in.readLine().toInt();
-        steps = in.readLine().toInt();
+        steps = in.readLine().toInt();//in.readLine().toInt() 从文件中读取一行文本，并将其转换为整数，分别赋值给 score 和 steps。
         elapsedTime = in.readLine();
 
         // 更新显示
