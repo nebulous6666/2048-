@@ -7,7 +7,7 @@ LoginWindow::LoginWindow(QWidget *parent) : QMainWindow(parent)
 
     centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
-
+centralWidget->setStyleSheet("background-color: #f5f5dc;");
     mainLayout = new QVBoxLayout(centralWidget);
 
     // 登录界面
@@ -105,6 +105,11 @@ LoginWindow::~LoginWindow()
 {
 }
 
+void LoginWindow::onSwitchToRegisterClicked()
+{
+    loginWidget->hide();
+    registerWidget->show();
+}
 void LoginWindow::onLoginButtonClicked()
 {
     QString username = loginUsernameEdit->text().trimmed();
@@ -147,11 +152,6 @@ void LoginWindow::onRegisterButtonClicked()
     }
 }
 
-void LoginWindow::onSwitchToRegisterClicked()
-{
-    loginWidget->hide();
-    registerWidget->show();
-}
 
 void LoginWindow::onSwitchToLoginClicked()
 {

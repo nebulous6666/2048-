@@ -424,7 +424,14 @@ void GameWindow::updateBoard()
                 board[i][j]->setStyleSheet("background-color: #cdc1b4; border-radius: 5px;");
             } else {
                 board[i][j]->setText(QString::number(gameBoard[i][j]));
+
+
+
                 QString color = getColorForNumber(gameBoard[i][j]);
+                // setStyleSheet 方法用于设置 QLabel 的样式表，样式表可以控制 QLabel 的外观，如背景颜色、文本颜色、字体大小等。
+                //         QString("background-color: %1; color: %2; font-size: 28px; font-weight: bold; border-radius: 5px;") 是一个格式化的字符串，其中 %1 和 %2 是占位符，分别用于后续替换为具体的值。
+                //                  .arg(color) 是将之前获取的背景颜色 color 替换到 %1 的位置。
+                //           .arg(gameBoard[i][j] <= 4 ? "#776e65" : "#f9f6f2") 是一个条件表达式，用于根据当前格子的数字来决定文本颜色：
                 board[i][j]->setStyleSheet(QString("background-color: %1; color: %2; font-size: 28px; font-weight: bold; border-radius: 5px;")
                                                .arg(color)
                                                .arg(gameBoard[i][j] <= 4 ? "#776e65" : "#f9f6f2"));

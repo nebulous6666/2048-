@@ -4,6 +4,7 @@ debug/keybindingswindow.o
 debug/loginwindow.o
 debug/main.o
 debug/mainwindow.o
+debug/pp.o
 debug/welcomewindow.o
 debug/moc_gamewindow.o
 debug/moc_instructionswindow.o

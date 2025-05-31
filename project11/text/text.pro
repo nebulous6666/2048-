@@ -15,6 +15,7 @@ SOURCES += \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
+    pp.cpp \
     welcomewindow.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     keybindingswindow.h \
     loginwindow.h \
     mainwindow.h \
+    pp.h \
     welcomewindow.h
 
 FORMS += \
